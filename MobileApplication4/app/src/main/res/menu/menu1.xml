@@ -5,6 +5,14 @@
     >
 
 
+    <item android:title="과제" >
+        <menu >
+            <item android:title="메뉴 만들기"
+                android:id="@+id/menu"/>
+            <item android:title="각종 계산기"
+                android:id="@+id/calculator"/>
+        </menu>
+    </item>
     <item android:title="배경색 변경" >
         <menu >
             <item android:title="빨간색"

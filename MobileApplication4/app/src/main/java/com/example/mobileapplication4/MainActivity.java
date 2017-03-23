@@ -1,5 +1,6 @@
 package com.example.mobileapplication4;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView imege;
     TextView title;
     RelativeLayout layout;
+    float num = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,24 +46,26 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
 
+            case R.id.menu:
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                break;
+
+            case R.id.calculator:
+
+                break;
+
             case R.id.mnubackgroundRed:
-                layout.setBackgroundColor(Color.rgb(100,0,0));
+                layout.setBackgroundColor(Color.rgb(255,204,204));
                 break;
             case R.id.mnubackgroundBlue:
-                layout.setBackgroundColor(Color.rgb(0,0,100));
+                layout.setBackgroundColor(Color.rgb(153,204,255));
                 break;
             case R.id.mnubackgroundYellow:
-                layout.setBackgroundColor(Color.rgb(100,100,100));
+                layout.setBackgroundColor(Color.rgb(255,255,204));
                 break;
             case R.id.mnupicRotate:
-                if(item.isChecked()){
-                    item.setChecked(false);
-                }
-                else{
-                    item.setChecked(true);
-                    //추가하기
-                }
-
+                num+=30;
+                imege.setRotation(num);
                 break;
             case R.id.mnushowTitle:
                 if(item.isChecked()){
