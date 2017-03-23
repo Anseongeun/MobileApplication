@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <TextView
+        android:text="글자크기 변경하기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_weight="1"
+        android:textSize="20dp"
+        />
+
+    <item android:title="배경색 변경"
+
+        android:id="@+id/mneYellow"
+        android:icon="@android:drawable/ic_lock_lock"
+        <menu >
+            <item android:title="노랑색"
+                android:id="@+id/backgroundYellow"/>
+            <item android:title="파랑색"
+                android:id="@+id/backgroundBlue"/>
+        </menu>
+    </item>
+    <group android:checkableBehavior="single">
+        <item android:title="글씨크기 20"
+            android:id="@+id/mnuFontSize20"
+            android:checked="true" />
+        <item android:title="글씨크기 40"
+            android:checked="false"
+            android:id="@+id/mnuFontSize40"/>
+    </group>
+</menu>
