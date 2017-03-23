@@ -28,9 +28,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 init();
-
-                total = korean+math+english;
-                average = total/3;
+                cal();
 
                 t1.setText(total+"점");
                 t2.setText(average+"점");
@@ -72,19 +70,29 @@ public class MainActivity extends AppCompatActivity {
         t2 = (TextView)findViewById(R.id.textView_average2);
         iv = (ImageView)findViewById(R.id.imageView);
 
-        if(e1.getText().toString().equals("")){
-            korean = 0;
+        String str1 = e1.getText().toString();
+        String str2 = e2.getText().toString();
+        String str3 = e3.getText().toString();
+
+
+        if(str1.equals("") || str2.equals("") || str3.equals("")){//0이면 0으로!
+            if(str1.equals("")){
+                e1.setText("0");
+            }
+            if(str2.equals("")){
+                e2.setText("0");
+            }
+            if(str3.equals("")){
+                e3.setText("0");
+            }
         }
-        else if(e2.getText().toString().equals("")){
-            math = 0;
-        }
-        else if(e3.getText().toString().equals("")){
-            english =0;
-        }
-        else{
-            korean = Integer.parseInt(e1.getText().toString());
-            math = Integer.parseInt(e2.getText().toString());
-            english =  Integer.parseInt(e3.getText().toString());
-        }
+    }
+    private void cal() {
+        korean = Integer.parseInt(e1.getText().toString());
+        math = Integer.parseInt(e2.getText().toString());
+        english =  Integer.parseInt(e3.getText().toString());
+
+        total = korean+math+english;
+        average = total/3;
     }
 }

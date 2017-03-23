@@ -48,6 +48,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#3563fa"
             android:id="@+id/chronometer"
             android:layout_weight="1"
             android:visibility="invisible"
@@ -58,26 +59,26 @@
     <FrameLayout
 
         android:layout_width="match_parent"
-        android:layout_height="380dp"
-        android:background="#f69c9c">
+        android:layout_height="430dp"
+        android:background="#f69c9c"
+        android:visibility="invisible"
+        android:id="@+id/layout"
+        >
 
         <FrameLayout
-            android:visibility="invisible"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="invisible"
+            android:id="@+id/layout1"
            >
 
             <DatePicker
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/datePicker" />
 
-            <CalendarView
-                android:layout_gravity="bottom"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:id="@+id/calendarView" />
+
 
         </FrameLayout>
 
@@ -85,11 +86,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="invisible"
+            android:id="@+id/layout2"
            >
 
             <TimePicker
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="match_parent"
                 android:id="@+id/timePicker"
                />
 
@@ -101,7 +103,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:columnCount="2"
-            android:rowCount="3">
+            android:rowCount="3"
+            android:id="@+id/layout3">
 
             <TextView
                 android:text="성인"
@@ -151,7 +154,10 @@
             android:rowCount="8"
             android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            android:id="@+id/layout4">
+
 
             <TextView
                 android:text="예약결과는 다음과 같습니다."
@@ -236,9 +242,13 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/Linearlayout5"
+        android:visibility="invisible"
+        >
 
     <Button
+        android:onClick="onMyclick"
         android:text="이전"
         android:layout_weight="1"
         android:layout_width="wrap_content"
@@ -246,6 +256,7 @@
         android:id="@+id/bPrev" />
 
     <Button
+        android:onClick="onMyclick"
         android:text="다음"
         android:layout_weight="1"
         android:layout_width="wrap_content"
