@@ -7,13 +7,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Main2Activity extends AppCompatActivity {
     TabHost tabhost;
-    EditText eWeight, eHeighgt;
-    TextView tResult;
+    EditText eWeight, eHeighgt,eSpace;
+    TextView tResult,tResultTab2;
     int weight;
     float height,bmi;
+    double suareMeter, pyeong;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,11 @@ public class Main2Activity extends AppCompatActivity {
             eHeighgt = (EditText)findViewById(R.id.eHeight);
             tResult = (TextView)findViewById(R.id.tResult);
 
+            if((eHeighgt.getText().toString() == "") || (eWeight.getText().toString() == "")){
+                Toast.makeText(getApplicationContext(),"입력해주세요",Toast.LENGTH_SHORT)
+                        .show();
+                return;
+            }
             weight = Integer.parseInt(eWeight.getText().toString());
             height = Float.parseFloat(eHeighgt.getText().toString());
 
@@ -59,10 +66,31 @@ public class Main2Activity extends AppCompatActivity {
 
         }
         else if(v.getId() == R.id.bTrans1){
+            eSpace = (EditText)findViewById(R.id.eSpace);
+            tResultTab2 = (TextView)findViewById(R.id.tResultTab2);
+            if(eSpace.getText().toString() == ""){
+                Toast.makeText(getApplication(),"입력하세요",Toast.LENGTH_SHORT)
+                        .show();
+                return;
+            }
+            pyeong =Double.parseDouble(eSpace.getText().toString());
+            suareMeter = pyeong*(3.305785);
+            tResultTab2.setText(suareMeter+" 제곱미터");
+
+
 
         }
         else if(v.getId() == R.id.bTrans2){
-
+            eSpace = (EditText)findViewById(R.id.eSpace);
+            tResultTab2 = (TextView)findViewById(R.id.tResultTab2);
+            if(eSpace.getText().toString() == ""){
+                Toast.makeText(getApplication(),"입력하세요",Toast.LENGTH_SHORT)
+                        .show();
+                return;
+            }
+            suareMeter = Double.parseDouble(eSpace.getText().toString());
+            pyeong = suareMeter*(0.3025);
+            tResultTab2.setText(pyeong+" 평");
         }
     }
 }
