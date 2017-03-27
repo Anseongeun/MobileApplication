@@ -90,7 +90,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:id="@+id/button" />
+                        android:id="@+id/bResultBMI"
+                        android:onClick="onMyClick"/>
 
                     <TextView
                         android:text="결과가 없습니다."
@@ -120,7 +121,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="number"
                         android:ems="10"
-                        android:id="@+id/space"
+                        android:id="@+id/eSpace"
                         android:background="#f7cccc"
                         android:hint="평/제곱미터 입력하세요"
                         android:layout_margin="10dp"/>
@@ -137,15 +138,17 @@
                         android:text="평을 제곱미터로 변환"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button2"
-                        android:layout_margin="10dp"/>
+                        android:id="@+id/bTrans1"
+                        android:layout_margin="10dp"
+                        android:onClick="onMyClick"/>
 
                     <Button
                         android:text="제곱미터를 평으로 변환"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button3"
-                        android:layout_margin="10dp"/>
+                        android:id="@+id/bTrans2"
+                        android:layout_margin="10dp"
+                        android:onClick="onMyClick"/>
                 </LinearLayout>
 
             </FrameLayout>
