@@ -14,7 +14,7 @@ public class Main3Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main3);
 
     }
-    public void onMyclick(View v){
+    public void onMyClick2(View v){
         if(v.getId() == R.id.bfirActivity){
             Intent intent = new Intent(Main3Activity.this, MainActivity.class);
             startActivity(intent);

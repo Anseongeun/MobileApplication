@@ -18,7 +18,7 @@
         android:layout_marginTop="75dp"
         android:id="@+id/bfirActivity"
         android:text="다양한 메뉴 만들기"
-        android:onClick="onMyClick"/>
+        android:onClick="onMyClick2"/>
 
     <Button
         android:text="각종 계산기"
@@ -28,5 +28,5 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="23dp"
-        android:onClick="onMyClick"/>
+        android:onClick="onMyClick2"/>
 </RelativeLayout>
