@@ -46,14 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
 
-            case R.id.menu:
-                Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                break;
-
-            case R.id.calculator:
-
-                break;
-
             case R.id.mnubackgroundRed:
                 layout.setBackgroundColor(Color.rgb(255,204,204));
                 break;
