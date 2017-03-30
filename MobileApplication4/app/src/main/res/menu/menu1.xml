@@ -7,7 +7,7 @@
 
     <item android:title="배경색 변경" >
         <menu >
-            <item android:title="빨간색"
+        <item android:title="빨간색"
                 android:id="@+id/mnubackgroundRed"/>
             <item android:title="파란색"
                 android:id="@+id/mnubackgroundBlue"/>
