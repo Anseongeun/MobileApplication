@@ -10,10 +10,10 @@ public class Table {
 
     String tablename;
     long time;
-    int date,state, spaghetti, pizza, price, membership;
+    int date, spaghetti, pizza, price, membership;
 
     public Table(String tablename,int spaghetti,int pizza,int price, int membership){
-        state = 0;
+
         this.tablename = tablename;
         this.spaghetti = spaghetti;
         this.pizza = pizza;
