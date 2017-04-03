@@ -16,7 +16,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:id="@+id/bT1" />
+                android:id="@+id/bT1"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -49,9 +49,9 @@
 
 
     <TableLayout
-        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         android:id="@+id/info">
 
         <TableRow
@@ -66,7 +66,6 @@
                 android:id="@+id/tablename" />
 
             <TextView
-                android:text="테이블1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="25dp"
@@ -86,7 +85,6 @@
                 android:id="@+id/textView15" />
 
             <TextView
-                android:text="00/00/0000 00:00"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="25dp"
@@ -106,7 +104,6 @@
                 android:id="@+id/textView17" />
 
             <TextView
-                android:text="0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="25dp"
@@ -126,7 +123,6 @@
                 android:id="@+id/textView19" />
 
             <TextView
-                android:text="0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="25dp"
@@ -147,7 +143,6 @@
                 android:id="@+id/textView21" />
 
             <TextView
-                android:text="기본 멤버쉽"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="25dp"
@@ -199,7 +194,7 @@
             android:text="정보수정" />
 
         <Button
-            android:text="Button"
+            android:text="초기화"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/bInit"
