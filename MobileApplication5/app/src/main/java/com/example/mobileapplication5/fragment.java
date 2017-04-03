@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -99,7 +100,7 @@ public class fragment extends Fragment implements View.OnClickListener{
                 .show();
     }
 
-    public void newOrder(View v){
+    public void newOrder(final View v){
 
 
         View dlgView = View.inflate(v.getContext(),R.layout.dialog,null);
@@ -111,13 +112,12 @@ public class fragment extends Fragment implements View.OnClickListener{
 
         dlg = new AlertDialog.Builder(v.getContext());
         dlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                //스낵바
+            @Override public void onClick(DialogInterface dialogInterface, int i){
+                Snackbar.make(v,"정보가 입력되었습니다.",Snackbar.LENGTH_SHORT)
+                        .show();
             }
         });
-
-        dlg.setNegativeButton("취소",null);
+        dlg.setNegativeButton("취소", null);
         dlg.setTitle("정보를 입력해 주세요");
         dlg.setView(dlgView);
         dlg.show();
@@ -173,10 +173,39 @@ public class fragment extends Fragment implements View.OnClickListener{
 
     }
 
-    public void setInfo(int num){
+    public void setInfo(int num){//해당 테이블에 맞게 정보 저장하기
         switch (num){
             case 1:
-
+                tablename.setText(table1.tablename);
+                spaghetti.setText(table1.spaghetti);
+                pizza.setText(table1.pizza);
+                if(table1.membership == 0) membership.setText("기본 멤버십");
+                else membership.setText("VIP 멤버십");
+                price.setText((table1.pizza *10000)+(table1.spaghetti*12000));
+                break;
+            case 2:
+                tablename.setText(table2.tablename);
+                spaghetti.setText(table2.spaghetti);
+                pizza.setText(table2.pizza);
+                if(table2.membership == 0) membership.setText("기본 멤버십");
+                else membership.setText("VIP 멤버십");
+                price.setText((table2.pizza *10000)+(table2.spaghetti*12000));
+                break;
+            case 3:
+                tablename.setText(table3.tablename);
+                spaghetti.setText(table3.spaghetti);
+                pizza.setText(table3.pizza);
+                if(table3.membership == 0) membership.setText("기본 멤버십");
+                else membership.setText("VIP 멤버십");
+                price.setText((table3.pizza *10000)+(table3.spaghetti*12000));
+                break;
+            case 4:
+                tablename.setText(table4.tablename);
+                spaghetti.setText(table4.spaghetti);
+                pizza.setText(table4.pizza);
+                if(table4.membership == 0) membership.setText("기본 멤버십");
+                else membership.setText("VIP 멤버십");
+                price.setText((table4.pizza *10000)+(table4.spaghetti*12000));
                 break;
         }
     }
@@ -199,6 +228,9 @@ public class fragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.bNew:
                 newOrder(view);
+                break;
+            case R.id.bChange:
+
                 break;
         }
     }
