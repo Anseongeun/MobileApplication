@@ -174,40 +174,79 @@ public class fragment extends Fragment implements View.OnClickListener{
     }
 
     public void setInfo(int num){//해당 테이블에 맞게 정보 저장하기
+        int total = 0;
         switch (num){
             case 1:
                 tablename.setText(table1.tablename);
                 spaghetti.setText(table1.spaghetti);
                 pizza.setText(table1.pizza);
-                if(table1.membership == 0) membership.setText("기본 멤버십");
-                else membership.setText("VIP 멤버십");
-                price.setText((table1.pizza *10000)+(table1.spaghetti*12000));
+                total =((table1.pizza *10000)+(table1.spaghetti*12000));
+                if(table1.membership == 0) {
+                    membership.setText("기본 멤버십");
+                    total = (total*90)/100;
+                }
+                else {
+                    membership.setText("VIP 멤버십");
+                    total = (total*70)/100;
+                }
+                price.setText(total);
                 break;
             case 2:
                 tablename.setText(table2.tablename);
                 spaghetti.setText(table2.spaghetti);
                 pizza.setText(table2.pizza);
-                if(table2.membership == 0) membership.setText("기본 멤버십");
-                else membership.setText("VIP 멤버십");
-                price.setText((table2.pizza *10000)+(table2.spaghetti*12000));
+                total =((table2.pizza *10000)+(table3.spaghetti*12000));
+                if(table2.membership == 0) {
+                    membership.setText("기본 멤버십");
+                    total = (total*90)/100;
+                }
+                else {
+                    membership.setText("VIP 멤버십");
+                    total = (total*70)/100;
+                }
+                price.setText(total);
                 break;
             case 3:
                 tablename.setText(table3.tablename);
                 spaghetti.setText(table3.spaghetti);
                 pizza.setText(table3.pizza);
-                if(table3.membership == 0) membership.setText("기본 멤버십");
-                else membership.setText("VIP 멤버십");
-                price.setText((table3.pizza *10000)+(table3.spaghetti*12000));
+
+                total =((table3.pizza *10000)+(table3.spaghetti*12000));
+                if(table3.membership == 0) {
+                    membership.setText("기본 멤버십");
+                    total = (total*90)/100;
+                }
+                else {
+                    membership.setText("VIP 멤버십");
+                    total = (total*70)/100;
+                }
+                price.setText(total);
                 break;
             case 4:
                 tablename.setText(table4.tablename);
                 spaghetti.setText(table4.spaghetti);
                 pizza.setText(table4.pizza);
-                if(table4.membership == 0) membership.setText("기본 멤버십");
-                else membership.setText("VIP 멤버십");
+
+                total =((table4.pizza *10000)+(table4.spaghetti*12000));
+                if(table4.membership == 0) {
+                    membership.setText("기본 멤버십");
+                    total = (total*90)/100;
+                }
+                else {
+                    membership.setText("VIP 멤버십");
+                    total = (total*70)/100;
+                }
+                price.setText(total);
+
                 price.setText((table4.pizza *10000)+(table4.spaghetti*12000));
                 break;
         }
+    }
+
+
+    public boolean isEmpty(TextView tablename){
+        if(tablename == null) return true;
+        else return false;
     }
 
 
