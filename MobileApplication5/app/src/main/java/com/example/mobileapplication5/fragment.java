@@ -99,28 +99,28 @@ public class fragment extends Fragment implements View.OnClickListener{
             case 1:
                 if(table1 == null) {
                     tablename.setText("테이블1");
-                    emptyToast();
+                    empty();
                 }
                 else setInfo(table1);
                 break;
             case 2:
                 if(table2 == null) {
                     tablename.setText("테이블2");
-                    emptyToast();
+                    empty();
                 }
                 else setInfo(table2);
                 break;
             case 3:
                 if(table3 == null) {
                     tablename.setText("테이블3");
-                    emptyToast();
+                    empty();
                 }
                 else setInfo(table3);
                 break;
             case 4:
                 if(table4 == null) {
                     tablename.setText("테이블4");
-                    emptyToast();
+                    empty();
                 }
                 else setInfo(table4);
                 break;
@@ -140,8 +140,12 @@ public class fragment extends Fragment implements View.OnClickListener{
             date.setText(table.date);
         }
     }
-
-    public void emptyToast() {
+    public void empty(){
+        date.setText("");
+        spaghetti.setText("");
+        pizza.setText("");
+        membership.setText("");
+        price.setText("");
         Toast.makeText(getActivity(), "비어있는 테이블입니다.", Toast.LENGTH_SHORT)
                 .show();
     }
@@ -202,7 +206,7 @@ public class fragment extends Fragment implements View.OnClickListener{
     }
 
     public void change(View v){
-        //if()정보 수정 비어있을 때!!!!!뜨면 안돼 바보야!!!!!!
+
         dlgView = View.inflate(v.getContext(),R.layout.dialog,null);
 
         final EditText ePizza = (EditText)dlgView.findViewById(R.id.ePizza);
@@ -259,6 +263,7 @@ public class fragment extends Fragment implements View.OnClickListener{
         spaghetti.setText("");
         membership.setText("");
         price.setText("");
+        date.setText("");
         table1 = null;
         table2 = null;
         table3 = null;
