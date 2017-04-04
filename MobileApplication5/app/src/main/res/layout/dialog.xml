@@ -54,7 +54,7 @@
             android:text="기본 멤버십" />
 
         <RadioButton
-            android:text="RadioButton"
+            android:text="VIP 멤버십"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/vip"

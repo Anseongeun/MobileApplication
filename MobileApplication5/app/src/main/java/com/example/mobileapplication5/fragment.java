@@ -18,6 +18,8 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 /**
  * Created by 박남주 on 2017-03-30.
  */
@@ -60,6 +62,7 @@ public class fragment extends Fragment implements View.OnClickListener{
         bChange.setOnClickListener(this);
         bInit.setOnClickListener(this);
 
+
         return fragment;
     }
 
@@ -67,49 +70,35 @@ public class fragment extends Fragment implements View.OnClickListener{
         switch (num){
             case 1:
                 if(table1 == null) {
-                    table1 = new Table("테이블1", 0, 0, 0);
+                    table1 = new Table("테이블1", 0, 0);
                     setInfo(table1);
                     emptyToast();
                 }
-                else{
-                    tablename.setText(table1.tablename);
-                    spaghetti.setText(table1.spaghetti+"");
-                    pizza.setText(table1.pizza+"");
-                    membership.setText(table1.membership);
-                    price.setText(table1.price+"");
-                }
+                else setInfo(table1);
                 break;
             case 2:
                 if(table2 == null) {
-                    table2 = new Table("테이블2", 0, 0, 0);
+                    table2 = new Table("테이블2", 0, 0);
                     setInfo(table2);
                     emptyToast();
                 }
-                else{
-
-                }
-
+                else setInfo(table2);
                 break;
             case 3:
                 if(table3 == null) {
-                    table3 = new Table("테이블3", 0, 0, 0);
+                    table3 = new Table("테이블3", 0, 0);
                     setInfo(table3);
                     emptyToast();
                 }
-                else{
-
-                }
-
+                else setInfo(table3);
                 break;
             case 4:
                 if(table4 == null) {
-                    table4 = new Table("테이블4", 0, 0, 0);
+                    table4 = new Table("테이블4", 0, 0);
                     setInfo(table4);
                     emptyToast();
                 }
-                else{
-
-                }
+                else setInfo(table4);
                 break;
         }
         layout_info.setVisibility(View.VISIBLE);
@@ -120,7 +109,8 @@ public class fragment extends Fragment implements View.OnClickListener{
         tablename.setText(table.tablename);
         spaghetti.setText(table.spaghetti+"");
         pizza.setText(table.pizza+"");
-        membership.setText(table.membership);
+        if(membership == null) membership.setText("");
+        else membership.setText(table.membership);
         price.setText(table.price+"");
     }
 
@@ -139,32 +129,36 @@ public class fragment extends Fragment implements View.OnClickListener{
         final RadioButton vip = (RadioButton) dlgView.findViewById(R.id.vip);
 
         dlg = new AlertDialog.Builder(v.getContext());
+
         dlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-            public void foo(Table table, int n){
+            public void foo(Table table, Button bt){
                 table.pizza = Integer.parseInt(ePizza.getText().toString());
                 table.spaghetti = Integer.parseInt(eSpaghetti.getText().toString());
                 if(basic.isChecked()){
-                    table2.membership = 0;
+                    table.membership = "기본멤버십";
+                    table.price =  ((table.spaghetti*10000)+(table.pizza*12000)*90/100);
                 }
                 else if(vip.isChecked()){
-                    table2.membership = 1;
+                    table.membership = "VIP멤버십";
+                    table.price = ((table.spaghetti*10000)+(table.pizza*12000)*70/100);
                 }
+                bt.setText(table.tablename);
                 setInfo(table);
             }
             @Override public void onClick(DialogInterface dialogInterface, int i){
                 Snackbar.make(v,"정보가 입력되었습니다.",Snackbar.LENGTH_SHORT)
                         .show();
                 if(tablename.getText().toString().contains("테이블1")){
-                    foo(table1, 1);
+                    foo(table1, bT1);
                 }
                 else if(tablename.getText().toString().contains("테이블2")){
-                    foo(table2, 2);
+                    foo(table2, bT2);
                 }
                 else if(tablename.getText().toString().contains("테이블3")){
-                   foo(table3, 3);
+                   foo(table3, bT3);
                 }
                 else if(tablename.getText().toString().contains("테이블4")){
-                    foo(table4, 4);
+                    foo(table4 ,bT4);
                 }
             }
         });
@@ -174,6 +168,12 @@ public class fragment extends Fragment implements View.OnClickListener{
         dlg.show();
 
     }
+
+    public void change() {
+
+
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -193,10 +193,9 @@ public class fragment extends Fragment implements View.OnClickListener{
                 newOrder(view);
                 break;
             case R.id.bChange:
-
+                change();
                 break;
         }
     }
-
 
 }

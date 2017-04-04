@@ -8,23 +8,19 @@ import java.util.Date;
 
 public class Table {
 
-    String tablename;
+    String tablename, membership;
     long time;
-    int date, spaghetti, pizza, price, membership;
+    int date, spaghetti, pizza, price;
 
-    public Table(String tablename,int spaghetti,int pizza, int membership){
+    public Table(String tablename,int spaghetti,int pizza){
 
         this.tablename = tablename;
         this.spaghetti = spaghetti;
         this.pizza = pizza;
-        this.membership = membership;
+        this.membership = null;
+        this.price = 0;
         date = new Date().getDate();
         time = new Date().getTime();
-        if(membership == 0){
-            this.price = ((spaghetti*10000)+(pizza*12000)*90/100);
-        }
-        else{
-            this.price = ((spaghetti*10000)+(pizza*12000)*70/100);
-        }
     }
 }
+
