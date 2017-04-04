@@ -12,14 +12,19 @@ public class Table {
     long time;
     int date, spaghetti, pizza, price, membership;
 
-    public Table(String tablename,int spaghetti,int pizza,int price, int membership){
+    public Table(String tablename,int spaghetti,int pizza, int membership){
 
         this.tablename = tablename;
         this.spaghetti = spaghetti;
         this.pizza = pizza;
-        this.price = price;
         this.membership = membership;
         date = new Date().getDate();
         time = new Date().getTime();
+        if(membership == 0){
+            this.price = ((spaghetti*10000)+(pizza*12000)*90/100);
+        }
+        else{
+            this.price = ((spaghetti*10000)+(pizza*12000)*70/100);
+        }
     }
 }

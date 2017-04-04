@@ -108,7 +108,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="25dp"
                 android:layout_column="2"
-                android:id="@+id/spaghetti" />
+                android:id="@+id/spaghetti"
+                android:text="0" />
         </TableRow>
 
         <TableRow
@@ -127,7 +128,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="25dp"
                 android:layout_column="2"
-                android:id="@+id/pizza" />
+                android:id="@+id/pizza"
+                android:text="0" />
         </TableRow>
 
         <TableRow
