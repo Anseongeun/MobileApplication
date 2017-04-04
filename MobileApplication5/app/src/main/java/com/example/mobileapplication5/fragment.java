@@ -29,6 +29,7 @@ public class fragment extends Fragment implements View.OnClickListener{
     TableLayout layout_info;
     Table table1 = null, table2 = null, table3 = null, table4 = null;
     AlertDialog.Builder dlg;
+    View dlgView;
 
     @Nullable
     @Override
@@ -102,12 +103,11 @@ public class fragment extends Fragment implements View.OnClickListener{
 
     public void newOrder(final View v){
 
-
-        View dlgView = View.inflate(v.getContext(),R.layout.dialog,null);
+        dlgView = View.inflate(v.getContext(),R.layout.dialog,null);
 
         final EditText ePizza = (EditText)dlgView.findViewById(R.id.ePizza);
         final EditText eSpaghetti = (EditText)dlgView.findViewById(R.id.eSpaghetti);
-        final RadioButton bagic = (RadioButton) dlgView.findViewById(R.id.bagic);
+        final RadioButton basic = (RadioButton) dlgView.findViewById(R.id.basic);
         final RadioButton vip = (RadioButton) dlgView.findViewById(R.id.vip);
 
         dlg = new AlertDialog.Builder(v.getContext());
@@ -115,6 +115,55 @@ public class fragment extends Fragment implements View.OnClickListener{
             @Override public void onClick(DialogInterface dialogInterface, int i){
                 Snackbar.make(v,"정보가 입력되었습니다.",Snackbar.LENGTH_SHORT)
                         .show();
+                if(tablename.getText().toString().contains("테이블1")){
+                    Log.d("Tag","남주 -2");
+                    table1.pizza = Integer.parseInt(ePizza.getText().toString());
+                    table1.spaghetti = Integer.parseInt(eSpaghetti.getText().toString());
+
+                    if(basic.isChecked()){
+                        table1.membership = 0;
+                    }
+                    else if(vip.isChecked()){
+                        table1.membership = 1;
+                    }
+                    Log.d("Tag","남주2");
+                    setInfo(1);
+                    Log.d("TAG","남주2-1");
+                }
+                else if(tablename.equals("테이블2")){
+                    table2.pizza = Integer.parseInt(ePizza.getText().toString());
+                    table2.spaghetti = Integer.parseInt(eSpaghetti.getText().toString());
+                    if(basic.isChecked()){
+                        table2.membership = 0;
+                    }
+                    else if(vip.isChecked()){
+                        table2.membership = 1;
+                    }
+                    setInfo(2);
+                }
+                else if(tablename.equals("테이블3")){
+                    table3.pizza = Integer.parseInt(ePizza.getText().toString());
+                    table3.spaghetti = Integer.parseInt(eSpaghetti.getText().toString());
+                    if(basic.isChecked()){
+                        table3.membership = 0;
+                    }
+                    else if(vip.isChecked()){
+                        table3.membership = 1;
+                    }
+                    setInfo(3);
+                }
+                else if(tablename.equals("테이블4")){
+                    table4.pizza = Integer.parseInt(ePizza.getText().toString());
+                    table4.spaghetti = Integer.parseInt(eSpaghetti.getText().toString());
+                    if(basic.isChecked()){
+                        table4.membership = 0;
+                    }
+                    else if(vip.isChecked()){
+                        table4.membership = 1;
+
+                    }
+                    setInfo(4);
+                }
             }
         });
         dlg.setNegativeButton("취소", null);
@@ -122,59 +171,11 @@ public class fragment extends Fragment implements View.OnClickListener{
         dlg.setView(dlgView);
         dlg.show();
 
-        //시간 정보 입력하기
-
-        if(tablename.equals("테이블1")){
-            table1.pizza = Integer.parseInt(ePizza.getText().toString());
-            table1.spaghetti = Integer.parseInt(eSpaghetti.getText().toString());
-            if(bagic.isChecked()){
-                table1.membership = 0;
-            }
-            else if(vip.isChecked()){
-                table1.membership = 1;
-            }
-            setInfo(1);
-        }
-        else if(tablename.equals("테이블2")){
-            table2.pizza = Integer.parseInt(ePizza.getText().toString());
-            table2.spaghetti = Integer.parseInt(eSpaghetti.getText().toString());
-            if(bagic.isChecked()){
-                table2.membership = 0;
-            }
-            else if(vip.isChecked()){
-                table2.membership = 1;
-            }
-            setInfo(2);
-        }
-        else if(tablename.equals("테이블3")){
-            table3.pizza = Integer.parseInt(ePizza.getText().toString());
-            table3.spaghetti = Integer.parseInt(eSpaghetti.getText().toString());
-            if(bagic.isChecked()){
-                table3.membership = 0;
-            }
-            else if(vip.isChecked()){
-                table3.membership = 1;
-            }
-            setInfo(3);
-        }
-        else if(tablename.equals("테이블4")){
-            table4.pizza = Integer.parseInt(ePizza.getText().toString());
-            table4.spaghetti = Integer.parseInt(eSpaghetti.getText().toString());
-            if(bagic.isChecked()){
-                table4.membership = 0;
-            }
-            else if(vip.isChecked()){
-                table4.membership = 1;
-
-            }
-            setInfo(4);
-        }
-
-
     }
 
     public void setInfo(int num){//해당 테이블에 맞게 정보 저장하기
         int total = 0;
+        Log.d("Tag","남주3");
         switch (num){
             case 1:
                 tablename.setText(table1.tablename);
@@ -185,11 +186,12 @@ public class fragment extends Fragment implements View.OnClickListener{
                     membership.setText("기본 멤버십");
                     total = (total*90)/100;
                 }
-                else {
+                else if(table1.membership == 1){
                     membership.setText("VIP 멤버십");
                     total = (total*70)/100;
                 }
                 price.setText(total);
+                Log.d("Tag","남주3-1");
                 break;
             case 2:
                 tablename.setText(table2.tablename);
