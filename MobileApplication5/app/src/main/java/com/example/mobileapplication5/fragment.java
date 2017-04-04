@@ -70,32 +70,28 @@ public class fragment extends Fragment implements View.OnClickListener{
         switch (num){
             case 1:
                 if(table1 == null) {
-                    table1 = new Table("테이블1", 0, 0);
-                    setInfo(table1);
+                    tablename.setText("테이블1");
                     emptyToast();
                 }
                 else setInfo(table1);
                 break;
             case 2:
                 if(table2 == null) {
-                    table2 = new Table("테이블2", 0, 0);
-                    setInfo(table2);
+                    tablename.setText("테이블2");
                     emptyToast();
                 }
                 else setInfo(table2);
                 break;
             case 3:
                 if(table3 == null) {
-                    table3 = new Table("테이블3", 0, 0);
-                    setInfo(table3);
+                    tablename.setText("테이블3");
                     emptyToast();
                 }
                 else setInfo(table3);
                 break;
             case 4:
                 if(table4 == null) {
-                    table4 = new Table("테이블4", 0, 0);
-                    setInfo(table4);
+                    tablename.setText("테이블4");
                     emptyToast();
                 }
                 else setInfo(table4);
@@ -106,12 +102,14 @@ public class fragment extends Fragment implements View.OnClickListener{
 
 
     public void setInfo(Table table){
-        tablename.setText(table.tablename);
-        spaghetti.setText(table.spaghetti+"");
-        pizza.setText(table.pizza+"");
-        if(membership == null) membership.setText("");
-        else membership.setText(table.membership);
-        price.setText(table.price+"");
+        if (table != null) {
+            tablename.setText(table.tablename);
+            spaghetti.setText(table.spaghetti+"");
+            pizza.setText(table.pizza+"");
+            if(membership == null) membership.setText("");
+            else membership.setText(table.membership);
+            price.setText(table.price+"");
+        }
     }
 
     public void emptyToast() {
@@ -149,6 +147,7 @@ public class fragment extends Fragment implements View.OnClickListener{
                 Snackbar.make(v,"정보가 입력되었습니다.",Snackbar.LENGTH_SHORT)
                         .show();
                 if(tablename.getText().toString().contains("테이블1")){
+                    table1 = new Table("테이블1", 0, 0);
                     foo(table1, bT1);
                 }
                 else if(tablename.getText().toString().contains("테이블2")){
@@ -169,8 +168,7 @@ public class fragment extends Fragment implements View.OnClickListener{
 
     }
 
-    public void change() {
-
+    public void change(){
 
     }
 
