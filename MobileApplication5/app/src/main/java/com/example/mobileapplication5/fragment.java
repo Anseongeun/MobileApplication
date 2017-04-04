@@ -68,31 +68,64 @@ public class fragment extends Fragment implements View.OnClickListener{
             case 1:
                 if(table1 == null) {
                     table1 = new Table("테이블1", 0, 0, 0, 0);
-                    tablename.setText(table1.tablename);
+                    initInfo(1);
+                }
+                else{
+
                 }
                 break;
             case 2:
                 if(table2 == null) {
                     table2 = new Table("테이블2", 0, 0, 0, 0);
-                    tablename.setText(table2.tablename);
+                    initInfo(2);
+                }
+                else{
+
                 }
 
                 break;
             case 3:
                 if(table3 == null) {
                     table3 = new Table("테이블3", 0, 0, 0, 0);
-                    tablename.setText(table3.tablename);
+                    initInfo(3);
+                }
+                else{
+
                 }
 
                 break;
             case 4:
                 if(table4 == null) {
                     table4 = new Table("테이블4", 0, 0, 0, 0);
-                    tablename.setText(table4.tablename);
+                    initInfo(4);
+                }
+                else{
+
                 }
                 break;
         }
         layout_info.setVisibility(View.VISIBLE);
+    }
+
+    private void initInfo(int i) {
+        switch(i){
+            case 1:
+                tablename.setText(table1.tablename);
+                break;
+            case 2:
+                tablename.setText(table2.tablename);
+                break;
+            case 3:
+                tablename.setText(table3.tablename);
+                break;
+            case 4:
+                tablename.setText(table4.tablename);
+                break;
+        }
+        pizza.setText("");
+        spaghetti.setText("");
+        membership.setText("");
+        price.setText("0원");
         emptyToast();
     }
 
@@ -116,7 +149,7 @@ public class fragment extends Fragment implements View.OnClickListener{
                 Snackbar.make(v,"정보가 입력되었습니다.",Snackbar.LENGTH_SHORT)
                         .show();
                 if(tablename.getText().toString().contains("테이블1")){
-                    Log.d("Tag","남주 -2");
+
                     table1.pizza = Integer.parseInt(ePizza.getText().toString());
                     table1.spaghetti = Integer.parseInt(eSpaghetti.getText().toString());
 
@@ -126,11 +159,9 @@ public class fragment extends Fragment implements View.OnClickListener{
                     else if(vip.isChecked()){
                         table1.membership = 1;
                     }
-                    Log.d("Tag","남주2");
                     setInfo(1);
-                    Log.d("TAG","남주2-1");
                 }
-                else if(tablename.equals("테이블2")){
+                else if(tablename.getText().toString().contains("테이블2")){
                     table2.pizza = Integer.parseInt(ePizza.getText().toString());
                     table2.spaghetti = Integer.parseInt(eSpaghetti.getText().toString());
                     if(basic.isChecked()){
@@ -141,7 +172,7 @@ public class fragment extends Fragment implements View.OnClickListener{
                     }
                     setInfo(2);
                 }
-                else if(tablename.equals("테이블3")){
+                else if(tablename.getText().toString().contains("테이블3")){
                     table3.pizza = Integer.parseInt(ePizza.getText().toString());
                     table3.spaghetti = Integer.parseInt(eSpaghetti.getText().toString());
                     if(basic.isChecked()){
@@ -152,7 +183,7 @@ public class fragment extends Fragment implements View.OnClickListener{
                     }
                     setInfo(3);
                 }
-                else if(tablename.equals("테이블4")){
+                else if(tablename.getText().toString().contains("테이블4")){
                     table4.pizza = Integer.parseInt(ePizza.getText().toString());
                     table4.spaghetti = Integer.parseInt(eSpaghetti.getText().toString());
                     if(basic.isChecked()){
@@ -179,18 +210,18 @@ public class fragment extends Fragment implements View.OnClickListener{
         switch (num){
             case 1:
                 tablename.setText(table1.tablename);
-                spaghetti.setText(table1.spaghetti);
-                pizza.setText(table1.pizza);
+                spaghetti.setText(table1.spaghetti+"");
+                pizza.setText(table1.pizza+"");
                 total =((table1.pizza *10000)+(table1.spaghetti*12000));
                 if(table1.membership == 0) {
                     membership.setText("기본 멤버십");
                     total = (total*90)/100;
                 }
-                else if(table1.membership == 1){
+                else{
                     membership.setText("VIP 멤버십");
                     total = (total*70)/100;
                 }
-                price.setText(total);
+                price.setText(total+"");
                 Log.d("Tag","남주3-1");
                 break;
             case 2:
