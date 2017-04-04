@@ -186,6 +186,8 @@
     </TableLayout>
 
     <LinearLayout
+        android:id="@+id/layoutFunc"
+        android:visibility="invisible"
         android:orientation="horizontal"
         android:gravity="bottom"
         android:layout_width="match_parent"

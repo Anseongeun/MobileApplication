@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -31,6 +32,7 @@ public class fragment extends Fragment implements View.OnClickListener{
     Button bT1, bT2, bT3, bT4,bNew,bChange,bInit;
     TextView tablename, date, spaghetti, pizza, membership, price;
     TableLayout layout_info;
+    LinearLayout layout_func;
     Table table1 = null, table2 = null, table3 = null, table4 = null;
     AlertDialog.Builder dlg;
     View dlgView;
@@ -54,6 +56,7 @@ public class fragment extends Fragment implements View.OnClickListener{
         price = (TextView) fragment.findViewById(R.id.price);
         membership = (TextView) fragment.findViewById(R.id.membership);
         layout_info = (TableLayout) fragment.findViewById(R.id.info);
+        layout_func = (LinearLayout)fragment.findViewById(R.id.layoutFunc);
 
         bT1.setOnClickListener(this);
         bT2.setOnClickListener(this);
@@ -95,6 +98,7 @@ public class fragment extends Fragment implements View.OnClickListener{
     }
 
     public void initInfo(int num) {
+        //테이블 버튼 눌렀을 때
         switch (num){
             case 1:
                 if(table1 == null) {
@@ -126,6 +130,7 @@ public class fragment extends Fragment implements View.OnClickListener{
                 break;
         }
         layout_info.setVisibility(View.VISIBLE);
+        layout_func.setVisibility(View.VISIBLE);
     }
 
 
@@ -138,6 +143,9 @@ public class fragment extends Fragment implements View.OnClickListener{
             else membership.setText(table.membership);
             price.setText(table.price+"");
             date.setText(table.date);
+            bNew.setEnabled(false);
+            bChange.setEnabled(true);
+
         }
     }
     public void empty(){
@@ -148,6 +156,8 @@ public class fragment extends Fragment implements View.OnClickListener{
         price.setText("");
         Toast.makeText(getActivity(), "비어있는 테이블입니다.", Toast.LENGTH_SHORT)
                 .show();
+        bNew.setEnabled(true);
+        bChange.setEnabled(false);
     }
 
     public void newOrder(final View v){
