@@ -256,6 +256,7 @@ public class fragment extends Fragment implements View.OnClickListener{
                 }
             }
         });
+        dlg.setNegativeButton("취소",null);
         dlg.setTitle("정보를 수정해 주세요");
         dlg.setView(dlgView);
         dlg.show();
@@ -267,7 +268,6 @@ public class fragment extends Fragment implements View.OnClickListener{
         bT2.setText("테이블2(EMPTY)");
         bT3.setText("테이블3(EMPTY)");
         bT4.setText("테이블4(EMPTY)");
-        layout_info.setVisibility(View.INVISIBLE);
         tablename.setText("");
         pizza.setText("");
         spaghetti.setText("");
@@ -278,6 +278,8 @@ public class fragment extends Fragment implements View.OnClickListener{
         table2 = null;
         table3 = null;
         table4 = null;
+        layout_info.setVisibility(View.INVISIBLE);
+        layout_func.setVisibility(View.INVISIBLE);
     }
 
     private String date(){
