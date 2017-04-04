@@ -65,8 +65,34 @@ public class fragment extends Fragment implements View.OnClickListener{
 
         return fragment;
     }
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.bT1:
+                initInfo(1);
+                break;
+            case R.id.bT2:
+                initInfo(2);
+                break;
+            case R.id.bT3:
+                initInfo(3);
+                break;
+            case R.id.bT4:
+                initInfo(4);
+                break;
+            case R.id.bNew:
+                newOrder(view);
+                break;
+            case R.id.bChange:
+                change(view);
+                break;
+            case R.id.bInit:
+                initall();
+                break;
+        }
+    }
 
-    public void init(int num) {
+    public void initInfo(int num) {
         switch (num){
             case 1:
                 if(table1 == null) {
@@ -151,12 +177,15 @@ public class fragment extends Fragment implements View.OnClickListener{
                     foo(table1, bT1);
                 }
                 else if(tablename.getText().toString().contains("테이블2")){
+                    table2 = new Table("테이블2", 0, 0);
                     foo(table2, bT2);
                 }
                 else if(tablename.getText().toString().contains("테이블3")){
+                    table3 = new Table("테이블3", 0, 0);
                    foo(table3, bT3);
                 }
                 else if(tablename.getText().toString().contains("테이블4")){
+                    table4 = new Table("테이블4", 0, 0);
                     foo(table4 ,bT4);
                 }
             }
@@ -168,32 +197,70 @@ public class fragment extends Fragment implements View.OnClickListener{
 
     }
 
-    public void change(){
+    public void change(View v){
+        //if()정보 수정 비어있을 때!!!!!뜨면 안돼 바보야!!!!!!
+        dlgView = View.inflate(v.getContext(),R.layout.dialog,null);
 
+        final EditText ePizza = (EditText)dlgView.findViewById(R.id.ePizza);
+        final EditText eSpaghetti = (EditText)dlgView.findViewById(R.id.eSpaghetti);
+        final RadioButton basic = (RadioButton) dlgView.findViewById(R.id.basic);
+        final RadioButton vip = (RadioButton) dlgView.findViewById(R.id.vip);
+
+        dlg = new AlertDialog.Builder(v.getContext());
+
+        dlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            public void foo(Table table){
+                table.pizza = Integer.parseInt(ePizza.getText().toString());
+                table.spaghetti = Integer.parseInt(eSpaghetti.getText().toString());
+                if(basic.isChecked()){
+                    table.membership = "기본멤버십";
+                    table.price =  ((table.spaghetti*10000)+(table.pizza*12000)*90/100);
+                }
+                else if(vip.isChecked()){
+                    table.membership = "VIP멤버십";
+                    table.price = ((table.spaghetti*10000)+(table.pizza*12000)*70/100);
+                };
+                setInfo(table);
+            }
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if(tablename.getText().toString().contains("테이블1")){
+                    foo(table1);
+                }
+                else if(tablename.getText().toString().contains("테이블2")){
+                    foo(table2);
+                }
+                else if(tablename.getText().toString().contains("테이블3")){
+                    foo(table3);
+                }
+                else if(tablename.getText().toString().contains("테이블4")){
+                    foo(table4);
+                }
+            }
+        });
+        dlg.setTitle("정보를 수정해 주세요");
+        dlg.setView(dlgView);
+        dlg.show();
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.bT1:
-                init(1);
-                break;
-            case R.id.bT2:
-                init(2);
-                break;
-            case R.id.bT3:
-                init(3);
-                break;
-            case R.id.bT4:
-                init(4);
-                break;
-            case R.id.bNew:
-                newOrder(view);
-                break;
-            case R.id.bChange:
-                change();
-                break;
-        }
+    private void initall() {
+
+        bT1.setText("테이블2(EMPTY");
+        bT2.setText("테이블2(EMPTY");
+        bT3.setText("테이블2(EMPTY");
+        bT4.setText("테이블2(EMPTY");
+        layout_info.setVisibility(View.INVISIBLE);
+        tablename.setText("");
+        pizza.setText("");
+        spaghetti.setText("");
+        membership.setText("");
+        price.setText("");
+        table1 = null;
+        table2 = null;
+        table3 = null;
+        table4 = null;
     }
+
+
 
 }
