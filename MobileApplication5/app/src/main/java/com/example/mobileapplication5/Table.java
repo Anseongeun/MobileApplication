@@ -8,9 +8,8 @@ import java.util.Date;
 
 public class Table {
 
-    String tablename, membership;
-    long time;
-    int date, spaghetti, pizza, price;
+    String tablename, membership, date;
+    int spaghetti, pizza, price;
 
     public Table(String tablename,int spaghetti,int pizza){
 
@@ -19,8 +18,7 @@ public class Table {
         this.pizza = pizza;
         this.membership = null;
         this.price = 0;
-        date = new Date().getDate();
-        time = new Date().getTime();
+        this.date = null;
     }
 }
 

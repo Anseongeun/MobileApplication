@@ -18,6 +18,8 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -27,7 +29,7 @@ import java.util.HashMap;
 public class fragment extends Fragment implements View.OnClickListener{
 
     Button bT1, bT2, bT3, bT4,bNew,bChange,bInit;
-    TextView tablename, time, spaghetti, pizza, membership, price;
+    TextView tablename, date, spaghetti, pizza, membership, price;
     TableLayout layout_info;
     Table table1 = null, table2 = null, table3 = null, table4 = null;
     AlertDialog.Builder dlg;
@@ -46,7 +48,7 @@ public class fragment extends Fragment implements View.OnClickListener{
         bChange = (Button)fragment.findViewById(R.id.bChange);
         bInit = (Button)fragment.findViewById(R.id.bInit);
         tablename = (TextView) fragment.findViewById(R.id.table);
-        time = (TextView) fragment.findViewById(R.id.time);
+        date = (TextView)fragment.findViewById(R.id.date);
         spaghetti = (TextView) fragment.findViewById(R.id.spaghetti);
         pizza = (TextView) fragment.findViewById(R.id.pizza);
         price = (TextView) fragment.findViewById(R.id.price);
@@ -135,6 +137,7 @@ public class fragment extends Fragment implements View.OnClickListener{
             if(membership == null) membership.setText("");
             else membership.setText(table.membership);
             price.setText(table.price+"");
+            date.setText(table.date);
         }
     }
 
@@ -166,6 +169,7 @@ public class fragment extends Fragment implements View.OnClickListener{
                     table.membership = "VIP멤버십";
                     table.price = ((table.spaghetti*10000)+(table.pizza*12000)*70/100);
                 }
+                table.date = date();
                 bt.setText(table.tablename);
                 setInfo(table);
             }
@@ -245,10 +249,10 @@ public class fragment extends Fragment implements View.OnClickListener{
 
     private void initall() {
 
-        bT1.setText("테이블2(EMPTY");
-        bT2.setText("테이블2(EMPTY");
-        bT3.setText("테이블2(EMPTY");
-        bT4.setText("테이블2(EMPTY");
+        bT1.setText("테이블1(EMPTY)");
+        bT2.setText("테이블2(EMPTY)");
+        bT3.setText("테이블3(EMPTY)");
+        bT4.setText("테이블4(EMPTY)");
         layout_info.setVisibility(View.INVISIBLE);
         tablename.setText("");
         pizza.setText("");
@@ -260,6 +264,18 @@ public class fragment extends Fragment implements View.OnClickListener{
         table3 = null;
         table4 = null;
     }
+
+    private String date(){
+        long now = System.currentTimeMillis();
+        Date date_ = new Date(now);
+        SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        String formatDate = sdfNow.format(date_);
+
+        return  formatDate;
+    }
+
+
+
 
 
 
