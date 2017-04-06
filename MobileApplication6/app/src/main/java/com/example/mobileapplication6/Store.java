@@ -3,9 +3,11 @@ package com.example.mobileapplication6;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.RadioButton;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by 박남주 on 2017-04-06.
@@ -16,10 +18,10 @@ public class Store implements Parcelable{
     String tel;
     String [] menu;
     String homepage;
-    int date_regist;
+    String date_regist;
     int num_category;
 
-    public Store(String name, String tel, String menu1, String menu2, String menu3, String homepage){
+    public Store(String name, String tel, String menu1, String menu2, String menu3, String homepage ,int num_category, String date_regist){
         menu = new String[3];
         this.name = name;
         this.tel = tel;
@@ -27,8 +29,8 @@ public class Store implements Parcelable{
         this.menu[1] = menu2;
         this.menu[2] = menu3;
         this.homepage = homepage;
-        this.date_regist = 0;
-        this.num_category = 0;
+        this.num_category = num_category;
+        this.date_regist = date_regist;
     }
 
     protected Store(Parcel in) {
@@ -36,8 +38,9 @@ public class Store implements Parcelable{
         tel = in.readString();
         menu = in.createStringArray();
         homepage = in.readString();
-        date_regist = in.readInt();
+        date_regist = in.readString();
         num_category = in.readInt();
+
     }
 
     public static final Creator<Store> CREATOR = new Creator<Store>() {
@@ -62,7 +65,7 @@ public class Store implements Parcelable{
         parcel.writeString(name);
         parcel.writeString(tel);
         parcel.writeString(homepage);
-        parcel.writeInt(date_regist);
+        parcel.writeString(date_regist);
         parcel.writeInt(num_category);
         parcel.writeStringArray(menu);
     }
