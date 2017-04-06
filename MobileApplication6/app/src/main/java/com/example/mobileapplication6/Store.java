@@ -3,17 +3,12 @@ package com.example.mobileapplication6;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.RadioButton;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by 박남주 on 2017-04-06.
  */
 
-public class Store implements Parcelable{
+public class Store implements Parcelable {
     String name;
     String tel;
     String [] menu;
@@ -40,7 +35,6 @@ public class Store implements Parcelable{
         homepage = in.readString();
         date_regist = in.readString();
         num_category = in.readInt();
-
     }
 
     public static final Creator<Store> CREATOR = new Creator<Store>() {
@@ -64,9 +58,9 @@ public class Store implements Parcelable{
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(name);
         parcel.writeString(tel);
+        parcel.writeStringArray(menu);
         parcel.writeString(homepage);
         parcel.writeString(date_regist);
         parcel.writeInt(num_category);
-        parcel.writeStringArray(menu);
     }
 }

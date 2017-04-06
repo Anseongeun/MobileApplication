@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -67,8 +68,11 @@ public class Main3Activity extends AppCompatActivity {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.imgCall:
-                intent2 = new Intent(ACTION_DIAL, Uri.parse(store.tel));
+                Log.d("남주","오류1");
+                intent2 = new Intent(ACTION_DIAL, Uri.parse("tel:/"+store.tel));
+                Log.d("남주","오류2");
                 startActivity(intent2);
+                Log.d("남주","오류3");
                 break;
             case R.id.imgURL:
                 intent2 = new Intent(Intent.ACTION_VIEW, Uri.parse(store.homepage));

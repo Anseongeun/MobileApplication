@@ -37,6 +37,9 @@ public class Main2Activity extends AppCompatActivity {
         if (v.getId() == R.id.btnAdd) {
             add();
         }
+        else if(v.getId() == R.id.btnCancel){
+            finish();
+        }
     }
 
     private void add() {
@@ -62,11 +65,12 @@ public class Main2Activity extends AppCompatActivity {
         intent.putExtra("store", store);
         setResult(RESULT_STORE, intent);
         finish();
+
     }
     private String date(){
         long now = System.currentTimeMillis();
         Date date_ = new Date(now);
-        SimpleDateFormat sdfNow = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd");
         String formatDate = sdfNow.format(date_);
 
         return  formatDate;

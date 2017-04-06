@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Store> data_store = new ArrayList<Store>();
     ArrayList<String> data_name = new ArrayList<String>();
     ArrayAdapter<String> adapter;
+    Store store;
     Intent intent;
 
     @Override
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void setListView(){
-       intent = new Intent(this, Main3Activity.class);
+
         lv = (ListView)findViewById(R.id.listview);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,data_name);
         lv.setAdapter(adapter);
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                intent = new Intent(MainActivity.this, Main3Activity.class);
                 intent.putExtra("store_main3", data_store.get(i));
                 startActivity(intent);
             }
@@ -71,15 +73,12 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
     }
 
-
-
     public void onClick(View v){
-        if(v.getId() == R.id.addStore){//맛집추가
-            intent = new Intent(this, Main2Activity.class);
-            startActivityForResult(intent, 100);
+        if(v.getId() == R.id.addStore){//맛집추가 - Main2Activity로 intent해서 data받기
+            intent = new Intent(MainActivity.this, Main2Activity.class);
+            startActivityForResult(intent, _REQ);
         }
     }
     @Override
@@ -87,9 +86,9 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data_);
         if(requestCode == _REQ){
             if(resultCode ==  RESULT_STORE){
-                Store data_store_ = data_.getParcelableExtra("store");
-                data_store.add(data_store_);
-                data_name.add(data_store_.name);
+                Store store = data_.getParcelableExtra("store");
+                data_store.add(store);
+                data_name.add(store.name);
                 adapter.notifyDataSetChanged();
             }
         }
