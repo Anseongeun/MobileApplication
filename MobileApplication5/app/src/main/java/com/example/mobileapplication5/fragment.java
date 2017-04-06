@@ -290,10 +290,4 @@ public class fragment extends Fragment implements View.OnClickListener{
 
         return  formatDate;
     }
-
-
-
-
-
-
 }
