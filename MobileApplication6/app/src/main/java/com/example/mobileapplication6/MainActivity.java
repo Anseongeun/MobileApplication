@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     final int _REQ = 100;
     final int RESULT_STORE = 0;
+    final int RESULT_CANCLED = 50;
 
     ListView lv;
     ArrayList<Store> data_store = new ArrayList<Store>();
@@ -90,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
                 data_store.add(store);
                 data_name.add(store.name);
                 adapter.notifyDataSetChanged();
+            }
+            else if(resultCode == RESULT_CANCLED){
+
             }
         }
     }

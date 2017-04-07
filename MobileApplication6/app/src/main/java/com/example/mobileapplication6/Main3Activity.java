@@ -15,7 +15,7 @@ public class Main3Activity extends AppCompatActivity {
 
     TextView txtname, tvmenu1,tvmenu2, tvmenu3, tvtel, tvURL, tvRegdate;
     ImageView imgno, imgURL, imgCall;
-    Intent intent, intent2;
+    Intent intent;
     Store store;
 
     @Override
@@ -66,24 +66,22 @@ public class Main3Activity extends AppCompatActivity {
     }
 
     public void onClick(View v){
+
+        intent = getIntent();
+        Store store = intent.getParcelableExtra("store_main3");
+
         switch (v.getId()){
             case R.id.imgCall:
-                Log.d("남주","오류1");
-                intent2 = new Intent(ACTION_DIAL, Uri.parse("tel:/"+store.tel));
-                Log.d("남주","오류2");
+                Intent intent2 = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:/" + store.tel));
                 startActivity(intent2);
-                Log.d("남주","오류3");
                 break;
             case R.id.imgURL:
-                intent2 = new Intent(Intent.ACTION_VIEW, Uri.parse(store.homepage));
-                startActivity(intent2);
+                Intent intent3 = new Intent(Intent.ACTION_VIEW, Uri.parse(store.homepage));
+                startActivity(intent3);
                 break;
             case R.id.btnback:
                 finish();
                 break;
         }
-
     }
-
-
 }

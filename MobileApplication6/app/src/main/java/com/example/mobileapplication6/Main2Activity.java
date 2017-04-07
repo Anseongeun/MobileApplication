@@ -13,6 +13,7 @@ import java.util.Date;
 public class Main2Activity extends AppCompatActivity {
 
     final int RESULT_STORE = 0;
+    final int RESULT_CANCELED = 50;
 
     RadioButton radio1, radio2, radio3;
     EditText etname, ettel, etmenu1, etmenu2, etmenu3, ethomepage;
@@ -34,16 +35,18 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     public void onClick(View v) {
+        intent = new Intent(Main2Activity.this, MainActivity.class);
         if (v.getId() == R.id.btnAdd) {
             add();
         }
         else if(v.getId() == R.id.btnCancel){
+            setResult(RESULT_CANCELED, intent);
             finish();
         }
     }
 
     private void add() {
-        intent = new Intent(this, MainActivity.class);
+        intent = new Intent(Main2Activity.this, MainActivity.class);
         Store store;
         String date = date();
         if (radio1.isChecked()) {
