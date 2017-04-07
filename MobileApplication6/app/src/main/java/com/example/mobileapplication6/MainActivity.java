@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                         .setNegativeButton("취소", null)
                         .show();
 
-                return false;
+                return true;
             }
         });
     }
